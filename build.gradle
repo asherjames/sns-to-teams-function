@@ -1,12 +1,12 @@
 buildscript {
-    ext.kotlin_version = '1.2.10'
+  ext.kotlin_version = '1.2.10'
 
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-    }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+  }
 }
 
 group 'ash.lambda'
@@ -15,17 +15,26 @@ version '1.0.0'
 apply plugin: 'kotlin'
 
 repositories {
-    mavenCentral()
+  mavenCentral()
+  jcenter()
+}
+
+ext {
+  awsLambdaCoreVersion = '1.2.0'
+  awsLambdaEventsVersion = '2.0.2'
+  klaxonVersion = '2.1.6'
 }
 
 dependencies {
-    compile 'com.amazonaws:aws-lambda-java-core:1.2.0'
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+  compile "com.amazonaws:aws-lambda-java-core:$awsLambdaCoreVersion"
+  compile "com.amazonaws:aws-lambda-java-events:$awsLambdaEventsVersion"
+  compile "com.beust:klaxon:$klaxonVersion"
+  compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 }
 
 compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+  kotlinOptions.jvmTarget = "1.8"
 }
 compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+  kotlinOptions.jvmTarget = "1.8"
 }
