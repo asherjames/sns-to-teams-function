@@ -7,17 +7,17 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonInclude
 import com.fasterxml.jackson.databind.MapperFeature
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.datatype.joda.JodaModule
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import org.apache.commons.text.StringEscapeUtils
-import org.joda.time.DateTime
+import java.time.ZonedDateTime
 
 class SnsHandler : RequestHandler<SNSEvent, Response>
 {
   private val objectMapper = ObjectMapper()
       .configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true)
-      .registerModule(JodaModule())
+      .registerModule(JavaTimeModule())
       .registerKotlinModule()
 
   override fun handleRequest(input: SNSEvent?, context: Context?): Response
@@ -47,7 +47,7 @@ data class SnsAlarmMessage(val alarmName: String,
                            val awsAccountId: String,
                            val newStateValue: String,
                            val newStateReason: String,
-                           val stateChangeTime: DateTime,
+                           val stateChangeTime: ZonedDateTime,
                            val region: String,
                            val oldStateValue: String,
                            val trigger: Trigger)
