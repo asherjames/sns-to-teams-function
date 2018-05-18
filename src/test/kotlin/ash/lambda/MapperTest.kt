@@ -1,5 +1,6 @@
 package ash.lambda
 
+import ash.lambda.model.SnsAlarmMessage
 import com.fasterxml.jackson.databind.MapperFeature
 import org.assertj.core.api.Assertions.*
 
