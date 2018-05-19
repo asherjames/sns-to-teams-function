@@ -20,7 +20,6 @@ repositories {
 }
 
 ext {
-  apacheVersion = '1.2'
   awsLambdaCoreVersion = '1.2.0'
   awsLambdaEventsVersion = '2.0.2'
   jacksonVersion = '2.9.4'
@@ -30,12 +29,13 @@ ext {
 }
 
 dependencies {
-  compile "org.apache.commons:commons-text:$apacheVersion"
   compile "com.amazonaws:aws-lambda-java-core:$awsLambdaCoreVersion"
   compile "com.amazonaws:aws-lambda-java-events:$awsLambdaEventsVersion"
   compile "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion"
   compile "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion"
   compile "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion"
+  compile 'com.github.kittinunf.fuel:fuel:1.13.0'
+  compile 'org.apache.commons:commons-text:1.2'
   compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
 
   testCompile "org.assertj:assertj-core:$assertjVersion"

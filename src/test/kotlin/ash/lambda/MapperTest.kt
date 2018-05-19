@@ -56,7 +56,7 @@ class MapperTest
     assertThat(result.stateChangeTime.monthValue).isEqualTo(5)
     assertThat(result.stateChangeTime.hour).isEqualTo(11)
     assertThat(result.stateChangeTime.minute).isEqualTo(24)
-    assertThat(result.stateChangeTime.zone).isEqualTo("UTC")
+    assertThat(result.stateChangeTime.zone.id).isEqualTo("UTC")
     assertThat(result.trigger.metricName).isEqualTo("HealthyHostCount")
   }
 }
